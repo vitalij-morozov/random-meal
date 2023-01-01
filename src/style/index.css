@@ -16,13 +16,13 @@ html {
   --primary-50: #eff6ff;
   --primary-100: #dbeafe;
   --primary-200: #bfdbfe;
-  --primary-300: #93c5fd;
+  --primary-300: #ffd8a9;
   --primary-400: #60a5fa;
   --primary-500: #2b3a55;
   --primary-600: #ce7777;
-  --primary-700: #1d4ed8;
-  --primary-800: #1e40af;
-  --primary-900: #1e3a8a;
+  --primary-700: #e6a55c;
+  --primary-800: #e6973e;
+  --primary-900: #e38b29;
 
   /* grey */
   --grey-50: #f0f4f8;
@@ -146,18 +146,19 @@ ul {
 .btn {
   cursor: pointer;
   color: var(--white);
-  background: var(--primary-500);
+  background: var(--primary-600);
   border: transparent;
   border-radius: var(--borderRadius);
   letter-spacing: var(--letterSpacing);
   padding: 0.5rem 0.75rem;
   box-shadow: var(--shadow-2);
   transition: var(--transition);
-  text-transform: capitalize;
+  text-transform: uppercase;
   display: inline-block;
+  font-size: 1rem;
 }
 .btn:hover {
-  background: var(--primary-600);
+  background: var(--primary-700);
   box-shadow: var(--shadow-3);
 }
 .btn-hipster {
@@ -182,6 +183,17 @@ ul {
 .btn-danger:hover {
   background: var(--red-dark);
   color: var(--white);
+}
+.member-btn {
+  background-color: transparent;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: var(--transition);
+  font-weight: 600;
+}
+.member-btn:hover {
+  color: var(--green-dark);
 }
 /* alerts */
 .alert {
