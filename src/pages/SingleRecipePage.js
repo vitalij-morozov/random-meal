@@ -21,7 +21,14 @@ function SingleRecipePage() {
     <div className='page single-recipe'>
       <div className='recipe-top'>
         <img src={strMealThumb} alt={strMeal} />
-        <FullRecipeCard name={strMeal} category={strCategory} area={strArea} source={strSource} video={strYoutube} />
+        <FullRecipeCard
+          id={mealId}
+          name={strMeal}
+          category={strCategory}
+          area={strArea}
+          source={strSource}
+          video={strYoutube}
+        />
       </div>
       <p className='instructions'>{strInstructions}</p>
       <FullRecipeIngr recipe={fullRecipe} />

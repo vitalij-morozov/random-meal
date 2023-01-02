@@ -6,5 +6,16 @@ import FilterBlock from './FilterBlock';
 import FullRecipeCard from './FullRecipeCard';
 import FullRecipeIngr from './FullRecipeIngr';
 import Footer from './Footer';
+import UserProfile from './UserProfile';
 
-export { LoginForm, RegisterForm, RecipeCard, NavBar, FilterBlock, FullRecipeCard, FullRecipeIngr, Footer };
+export {
+  LoginForm,
+  RegisterForm,
+  RecipeCard,
+  NavBar,
+  FilterBlock,
+  FullRecipeCard,
+  FullRecipeIngr,
+  Footer,
+  UserProfile,
+};

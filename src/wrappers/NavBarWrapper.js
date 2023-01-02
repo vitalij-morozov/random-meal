@@ -11,6 +11,9 @@ const Wrapper = styled.nav`
   .logo {
     width: 10rem;
   }
+  h3 {
+    margin: 0;
+  }
   .profile {
     background-image: url('https://e7.pngegg.com/pngimages/442/477/png-clipart-computer-icons-user-profile-avatar-profile-heroes-profile-thumbnail.png');
     background-color: white;

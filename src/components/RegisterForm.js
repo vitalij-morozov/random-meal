@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { registerUser } from '../features/userSlice';
 import FormRow from './FormRow';
@@ -26,23 +26,12 @@ function RegisterForm({ toggle }) {
     );
   };
 
-  const handleChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-  };
-
   return (
     <form className='form' onSubmit={handleSubmit}>
       <h2>Register</h2>
-      <FormRow type='text' name='username' inRef={usernameRef} handleChange={handleChange} />
-      <FormRow type='password' name='password1' labelText='password' inRef={passOneRef} handleChange={handleChange} />
-      <FormRow
-        type='password'
-        name='password2'
-        labelText='repeat password'
-        inRef={passTwoRef}
-        handleChange={handleChange}
-      />
+      <FormRow type='text' name='username' inRef={usernameRef} />
+      <FormRow type='password' name='password1' labelText='password' inRef={passOneRef} />
+      <FormRow type='password' name='password2' labelText='repeat password' inRef={passTwoRef} />
       <p>
         Already have an account?
         <button className='member-btn' onClick={toggle} type='button'>

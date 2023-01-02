@@ -19,6 +19,8 @@ function NavBar() {
 
       {user ? (
         <div className='user'>
+          <h3>{user?.username}</h3>
+
           <Link to='/profile'>
             <div className='profile'></div>
           </Link>

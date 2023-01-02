@@ -41,7 +41,7 @@ export const loginUser = createAsyncThunk('user/loginUser', async (user, thunkAP
 
 export const addUserFavorite = createAsyncThunk('user/addUserFavorite', async (item, thunkAPI) => {
   try {
-    const response = await fetch(`${baseURL}/tp/user/${initialState.user.secret}`, {
+    const response = await fetch(`${baseURL}/rr/users/${item.userId}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(item),
@@ -91,6 +91,21 @@ const userSlice = createSlice({
       toast.success(`Welcome Back, ${data.user?.name}`);
     },
     [loginUser.rejected]: (state, { payload }) => {
+      state.isLoading = false;
+      toast.error(payload);
+    },
+    [addUserFavorite.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [addUserFavorite.fulfilled]: (state, { payload }) => {
+      const { data } = payload;
+      console.log('data ===', data);
+      state.isLoading = false;
+      state.user = data.user;
+      addUserToLocalStorage(data.user);
+      toast.success(`Recipe Added to Favorites, ${data.user.name}!`);
+    },
+    [addUserFavorite.rejected]: (state, { payload }) => {
       state.isLoading = false;
       toast.error(payload);
     },

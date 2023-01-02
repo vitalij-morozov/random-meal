@@ -1,8 +1,24 @@
 import React from 'react';
 import { MdFavoriteBorder } from 'react-icons/md';
+import { useDispatch, useSelector } from 'react-redux';
+import { addUserFavorite } from '../features/userSlice';
 import Wrapper from '../wrappers/FullRecipeCardWrapper';
 
-function FullRecipeCard({ name, category, area, source, video }) {
+function FullRecipeCard({ id, name, category, area, source, video }) {
+  const { user } = useSelector((store) => store.user);
+
+  const dispatch = useDispatch();
+
+  const handleAddToFavorite = () => {
+    const exists = user.favorites.find((f) => f.mealId === id);
+    console.log('exists ===', exists);
+    if (exists) {
+      alert('This recipe is already in the favorites');
+      return;
+    }
+    dispatch(addUserFavorite({ userId: user.secret, mealId: id, category, name }));
+  };
+
   return (
     <Wrapper>
       <h4>
@@ -22,20 +38,11 @@ function FullRecipeCard({ name, category, area, source, video }) {
           Recipe On Youtube
         </a>
       )}
-      <button type='button' className='btn'>
+      <button type='button' className='btn' onClick={handleAddToFavorite}>
         Add Favorite <MdFavoriteBorder />
       </button>
     </Wrapper>
   );
 }
-<iframe
-  width='1730'
-  height='712'
-  src='https://www.youtube.com/embed/oWzc8gZb634'
-  title='This Game is $120 on Steam'
-  frameborder='0'
-  allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-  allowfullscreen
-></iframe>;
 
 export default FullRecipeCard;
