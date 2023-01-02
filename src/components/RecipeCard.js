@@ -9,15 +9,15 @@ function RecipeCard() {
 
   return (
     <Wrapper className='card'>
-      <h2>{recipe.strMeal}</h2>
       <img src={recipe.strMealThumb} alt={recipe.strMeal} className='card-img' />
+      <h2>{recipe.strMeal}</h2>
       <div className='buttons'>
-        <Link to={`/recipes/${recipe.idMeal}`} className='card-link'>
-          Learn More
-        </Link>
-        <button type='button' className='card-favorites'>
+        <button type='button' className='btn'>
           Add Favorite
         </button>
+        <Link to={`/recipes/${recipe.idMeal}`} className='card-link'>
+          Full Recipe
+        </Link>
       </div>
     </Wrapper>
   );

@@ -6,7 +6,7 @@ const Wrapper = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 3%;
+  margin-top: 1.5%;
   margin-bottom: 1.3rem;
 
   .form-row {

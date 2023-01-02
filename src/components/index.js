@@ -5,5 +5,6 @@ import NavBar from './NavBar';
 import FilterBlock from './FilterBlock';
 import FullRecipeCard from './FullRecipeCard';
 import FullRecipeIngr from './FullRecipeIngr';
+import Footer from './Footer';
 
-export { LoginForm, RegisterForm, RecipeCard, NavBar, FilterBlock, FullRecipeCard, FullRecipeIngr };
+export { LoginForm, RegisterForm, RecipeCard, NavBar, FilterBlock, FullRecipeCard, FullRecipeIngr, Footer };

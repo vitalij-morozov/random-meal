@@ -1,19 +1,20 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  max-width: 500px;
+  max-width: 460px;
   padding: 1rem 1.5rem;
   box-shadow: var(--shadow-3);
-  background-color: var(--primary-800);
+  background-color: var(--primary-200);
   border-radius: 1rem;
   h2 {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     margin-bottom: 0.4rem;
     text-align: center;
     font-weight: bold;
   }
   img {
     width: 100%;
+    border-radius: 1rem;
   }
   .buttons {
     width: 100%;
@@ -21,6 +22,12 @@ const Wrapper = styled.div`
     align-items: center;
     justify-content: space-between;
     margin-top: 0.7rem;
+    gap: 1rem;
+    .btn {
+      border-radius: 0;
+      width: 50%;
+      border: 1px solid var(--primary-600);
+    }
   }
   .card-link {
     padding: 0.5rem;
@@ -34,6 +41,8 @@ const Wrapper = styled.div`
     letter-spacing: 0.1rem;
     cursor: pointer;
     transition: var(--transition);
+    display: flex;
+    justify-content: center;
   }
   .card-link:hover {
     background-color: var(--primary-600);
