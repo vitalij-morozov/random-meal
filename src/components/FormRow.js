@@ -1,12 +1,12 @@
 import React from 'react';
 
-function FormRow({ type, name, value, handleChange, labelText }) {
+function FormRow({ type, name, handleChange, labelText, inRef }) {
   return (
     <div className='form-row'>
       <label htmlFor={name} className='form-label'>
         {labelText || name}
       </label>
-      <input type={type} name={name} value={value} onChange={handleChange} className='form-input' />
+      <input ref={inRef} type={type} name={name} onChange={handleChange} className='form-input' />
     </div>
   );
 }

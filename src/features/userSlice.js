@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { baseURL } from '../utils/fetch';
-import { addUserToLocalStorage, getUserFromLocalStorage } from '../utils/localStorage';
+import { addUserToLocalStorage, getUserFromLocalStorage, removeUserFromLocalStorage } from '../utils/localStorage';
 import { toast } from 'react-toastify';
 
 const initialState = {
@@ -8,7 +8,7 @@ const initialState = {
   user: getUserFromLocalStorage(),
 };
 
-const registerUser = createAsyncThunk('user/registerUser', async (user, thunkAPI) => {
+export const registerUser = createAsyncThunk('user/registerUser', async (user, thunkAPI) => {
   try {
     const response = await fetch(`${baseURL}/rr/register`, {
       method: 'POST',
@@ -19,11 +19,12 @@ const registerUser = createAsyncThunk('user/registerUser', async (user, thunkAPI
 
     return data;
   } catch (error) {
+    console.log('error ===', error);
     return thunkAPI.rejectWithValue(error.message);
   }
 });
 
-const loginUser = createAsyncThunk('user/loginUser', async (user, thunkAPI) => {
+export const loginUser = createAsyncThunk('user/loginUser', async (user, thunkAPI) => {
   try {
     const response = await fetch(`${baseURL}/rr/login`, {
       method: 'POST',
@@ -38,7 +39,7 @@ const loginUser = createAsyncThunk('user/loginUser', async (user, thunkAPI) => {
   }
 });
 
-const addUserFavorite = createAsyncThunk('user/addUserFavorite', async (item, thunkAPI) => {
+export const addUserFavorite = createAsyncThunk('user/addUserFavorite', async (item, thunkAPI) => {
   try {
     const response = await fetch(`${baseURL}/tp/user/${initialState.user.secret}`, {
       method: 'PATCH',
@@ -52,12 +53,18 @@ const addUserFavorite = createAsyncThunk('user/addUserFavorite', async (item, th
   }
 });
 
-const removeUserFavorite = createAsyncThunk('user/removeUserFavorite', async (item, thunkAPI) => {});
+export const removeUserFavorite = createAsyncThunk('user/removeUserFavorite', async (item, thunkAPI) => {});
 
 const userSlice = createSlice({
   name: 'user',
   initialState,
-  reducers: {},
+  reducers: {
+    logoutUser: (state) => {
+      removeUserFromLocalStorage();
+      state.user = null;
+      console.log('state.user ===', state);
+    },
+  },
   extraReducers: {
     [registerUser.pending]: (state) => {
       state.isLoading = true;
@@ -73,7 +80,23 @@ const userSlice = createSlice({
       state.isLoading = false;
       toast.error(payload);
     },
+    [loginUser.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [loginUser.fulfilled]: (state, { payload }) => {
+      const { data } = payload;
+      state.isLoading = false;
+      state.user = data.user;
+      addUserToLocalStorage(data.user);
+      toast.success(`Welcome Back, ${data.user?.name}`);
+    },
+    [loginUser.rejected]: (state, { payload }) => {
+      state.isLoading = false;
+      toast.error(payload);
+    },
   },
 });
+
+export const { logoutUser } = userSlice.actions;
 
 export default userSlice.reducer;

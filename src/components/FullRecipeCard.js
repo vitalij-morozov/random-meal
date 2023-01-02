@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { MdFavoriteBorder } from 'react-icons/md';
 import Wrapper from '../wrappers/FullRecipeCardWrapper';
 
 function FullRecipeCard({ name, category, area, source, video }) {
@@ -22,6 +22,9 @@ function FullRecipeCard({ name, category, area, source, video }) {
           Recipe On Youtube
         </a>
       )}
+      <button type='button' className='btn'>
+        Add Favorite <MdFavoriteBorder />
+      </button>
     </Wrapper>
   );
 }

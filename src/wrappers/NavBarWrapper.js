@@ -12,10 +12,13 @@ const Wrapper = styled.nav`
     width: 10rem;
   }
   .profile {
+    background-image: url('https://e7.pngegg.com/pngimages/442/477/png-clipart-computer-icons-user-profile-avatar-profile-heroes-profile-thumbnail.png');
+    background-color: white;
     border: 4px solid var(--primary-600);
     border-radius: 50%;
     padding: 2.5rem;
-    margin-right: 3rem;
+    background-position: center center;
+    background-size: cover;
   }
   .auth-nav {
     background-color: var(--primary-400);
@@ -33,6 +36,11 @@ const Wrapper = styled.nav`
   }
   .auth-nav:hover {
     background-color: var(--primary-600);
+  }
+  .user {
+    display: flex;
+    align-items: center;
+    gap: 1.8rem;
   }
 `;
 export default Wrapper;

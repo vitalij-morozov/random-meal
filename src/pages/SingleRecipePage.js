@@ -27,7 +27,7 @@ function SingleRecipePage() {
       <FullRecipeIngr recipe={fullRecipe} />
 
       <Link to='/' className='btn'>
-        Go Back
+        Go Home
       </Link>
     </div>
   );

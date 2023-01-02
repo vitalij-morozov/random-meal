@@ -1,40 +1,46 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { registerUser } from '../features/userSlice';
 import FormRow from './FormRow';
 
 function RegisterForm({ toggle }) {
-  const initState = {
-    username: '',
-    password1: '',
-    password2: '',
-  };
+  const dispatch = useDispatch();
 
-  const [values, setValues] = useState(initState);
+  const usernameRef = useRef();
+  const passOneRef = useRef();
+  const passTwoRef = useRef();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!usernameRef.current.value || !passOneRef.current.value || !passTwoRef.current.value) {
+      alert('Please fill out fields');
+      return;
+    }
+    dispatch(
+      registerUser({
+        username: usernameRef.current.value,
+        password1: passOneRef.current.value,
+        password2: passTwoRef.current.value,
+      })
+    );
   };
 
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    setValues({ [name]: value });
   };
+
   return (
     <form className='form' onSubmit={handleSubmit}>
       <h2>Register</h2>
-      <FormRow type='text' name='username' value={values.username} handleChange={handleChange} />
-      <FormRow
-        type='password'
-        name='password1'
-        labelText='password'
-        value={values.password1}
-        handleChange={handleChange}
-      />
+      <FormRow type='text' name='username' inRef={usernameRef} handleChange={handleChange} />
+      <FormRow type='password' name='password1' labelText='password' inRef={passOneRef} handleChange={handleChange} />
       <FormRow
         type='password'
         name='password2'
         labelText='repeat password'
-        value={values.password2}
+        inRef={passTwoRef}
         handleChange={handleChange}
       />
       <p>

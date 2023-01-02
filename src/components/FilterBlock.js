@@ -4,6 +4,7 @@ import Wrapper from '../wrappers/FilterBlockWrapper';
 function FilterBlock({ categories, handleSelection, handleClick }) {
   return (
     <Wrapper className='section'>
+      <h3>Discover new recipes!</h3>
       <h2>Select Category</h2>
       <div className='form-row'>
         <select name='category' onChange={handleSelection}>
