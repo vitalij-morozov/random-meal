@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { AuthPage, MainPage } from './pages';
+import { AuthPage, MainPage, SingleRecipePage } from './pages';
 
 function App() {
   return (
@@ -8,7 +8,7 @@ function App() {
         <Route path='/' element={<MainPage />} />
         <Route path='/auth' element={<AuthPage />} />
         <Route path='/profile' />
-        <Route path='/meals/:mealId' />
+        <Route path='/recipes/:mealId' element={<SingleRecipePage />} />
         <Route path='*' />
       </Routes>
     </Router>

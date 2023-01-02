@@ -5,7 +5,8 @@ const initialState = {
   isLoading: false,
   categories: [],
   selectedCategory: `Beef`,
-  recipe: {},
+  recipe: null,
+  fullRecipe: {},
 };
 
 export const getRecipeCategories = createAsyncThunk('recipes/getRecipeCategories', async (thunkAPI) => {
@@ -22,6 +23,17 @@ export const getRecipeCategories = createAsyncThunk('recipes/getRecipeCategories
 export const getRecipesByCategory = createAsyncThunk('recipes/getRecipesByCategory', async (cat, thunkAPI) => {
   try {
     const response = await fetch(`${apiURL}/filter.php?c=${cat}`);
+    console.log('response ===', response);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log('error ===', error);
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
+export const getRecipeById = createAsyncThunk('recipes/getRecipeById', async (id, thunkAPI) => {
+  try {
+    const response = await fetch(`${apiURL}/lookup.php?i=${id}`);
     console.log('response ===', response);
     const data = await response.json();
     return data;
@@ -63,6 +75,18 @@ const recipeSlice = createSlice({
       state.isLoading = false;
       const random = Math.floor(Math.random() * payload.meals.length);
       state.recipe = payload.meals[random];
+    },
+    [getRecipesByCategory.rejected]: (state, { error }) => {
+      state.isLoading = false;
+      console.warn(error);
+    },
+    [getRecipeById.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [getRecipeById.fulfilled]: (state, { payload }) => {
+      state.isLoading = false;
+      console.log('payload full meal ===', payload);
+      state.fullRecipe = payload.meals[0];
     },
     [getRecipesByCategory.rejected]: (state, { error }) => {
       state.isLoading = false;

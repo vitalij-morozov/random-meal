@@ -4,7 +4,7 @@ import { FilterBlock, RecipeCard } from '../components';
 import { getRecipeCategories, handleCategorySelect, getRecipesByCategory } from '../features/recipeSlice';
 
 function MainPage() {
-  const { categories, selectedCategory } = useSelector((store) => store.recipe);
+  const { categories, selectedCategory, recipe } = useSelector((store) => store.recipe);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -23,7 +23,8 @@ function MainPage() {
   return (
     <div className='page section-center'>
       <FilterBlock categories={categories} handleSelection={handleSelection} handleClick={handleClick} />
-      <RecipeCard />
+
+      {recipe ? <RecipeCard /> : <h2>Recipe will show up here</h2>}
     </div>
   );
 }
