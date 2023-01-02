@@ -14,7 +14,7 @@ function FilterBlock({ categories, handleSelection, handleClick }) {
           ))}
         </select>
       </div>
-      <button type='button' onClick={handleClick}>
+      <button type='button' onClick={handleClick} className='btn btn-block'>
         Get Random Recipe!
       </button>
     </Wrapper>
