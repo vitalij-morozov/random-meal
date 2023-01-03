@@ -19,7 +19,6 @@ export const registerUser = createAsyncThunk('user/registerUser', async (user, t
 
     return data;
   } catch (error) {
-    console.log('error ===', error);
     return thunkAPI.rejectWithValue(error.message);
   }
 });
@@ -72,7 +71,6 @@ const userSlice = createSlice({
     logoutUser: (state) => {
       removeUserFromLocalStorage();
       state.user = null;
-      console.log('state.user ===', state);
     },
   },
   extraReducers: {
@@ -109,7 +107,6 @@ const userSlice = createSlice({
     },
     [addUserFavorite.fulfilled]: (state, { payload }) => {
       const { data } = payload;
-      console.log('data ===', data);
       state.isLoading = false;
       state.user = data.user;
       addUserToLocalStorage(data.user);
@@ -124,7 +121,6 @@ const userSlice = createSlice({
     },
     [removeUserFavorite.fulfilled]: (state, { payload }) => {
       const { data } = payload;
-      console.log('data ===', data);
       state.isLoading = false;
       state.user = data.user;
       addUserToLocalStorage(data.user);
