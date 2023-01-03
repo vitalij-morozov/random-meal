@@ -1,4 +1,4 @@
-import React, { useId } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Wrapper from '../wrappers/FavoritesCardWrapper';
 import { BsTrash } from 'react-icons/bs';

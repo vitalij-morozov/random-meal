@@ -13,18 +13,22 @@ function RecipeCard() {
   const dispatch = useDispatch();
 
   const handleAddToFavorite = () => {
+    if (!user) {
+      toast.error('You must have an account to add favorites');
+      return;
+    }
     const exists = user.favorites.find((f) => f.mealId === recipe.idMeal);
-    console.log('exists ===', exists);
     if (exists) {
       toast.error('This recipe is already in the favorites');
       return;
     }
+
     dispatch(
       addUserFavorite({ userId: user.secret, mealId: recipe.idMeal, category: selectedCategory, name: recipe.strMeal })
     );
     toast.success('Meal added to favorites successfully');
   };
-  console.log('recipe ===', recipe);
+
   return (
     <Wrapper className='card'>
       <img src={recipe.strMealThumb} alt={recipe.strMeal} className='card-img' />

@@ -11,7 +11,10 @@ const Wrapper = styled.div`
     width: 100%;
     border-bottom: 1px solid var(--grey-100);
   }
-
+  .ingr-measure,
+  .ingr-name {
+    font-weight: 700;
+  }
   @media (max-width: 662px) {
     width: 100%;
   }

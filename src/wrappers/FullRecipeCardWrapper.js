@@ -10,6 +10,12 @@ const Wrapper = styled.div`
     margin: 0;
     font-weight: 700;
   }
+  .title {
+    color: var(--primary-400);
+    margin-right: 0.3rem;
+    font-size: 1.25rem;
+    text-decoration: underline;
+  }
   a {
     color: blue;
     transition: var(--transition);
@@ -22,6 +28,12 @@ const Wrapper = styled.div`
     margin: 0;
     padding: 0;
     border: none;
+  }
+  .btn {
+    width: 80%;
+    span {
+      margin-right: 0.3rem;
+    }
   }
 `;
 
