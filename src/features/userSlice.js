@@ -53,7 +53,17 @@ export const addUserFavorite = createAsyncThunk('user/addUserFavorite', async (i
   }
 });
 
-export const removeUserFavorite = createAsyncThunk('user/removeUserFavorite', async (item, thunkAPI) => {});
+export const removeUserFavorite = createAsyncThunk('user/removeUserFavorite', async (item, thunkAPI) => {
+  try {
+    const response = await fetch(`${baseURL}/rr/users/${item.userId}&${item.mealId}`, {
+      method: 'DELETE',
+    });
+    const data = response.json();
+    return data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
 
 const userSlice = createSlice({
   name: 'user',
@@ -74,7 +84,7 @@ const userSlice = createSlice({
       state.isLoading = false;
       state.user = data.user;
       addUserToLocalStorage(data.user);
-      toast.success(`Welcome, ${data.user?.name}`);
+      toast.success(`Welcome, ${data.user?.username}`);
     },
     [registerUser.rejected]: (state, { payload }) => {
       state.isLoading = false;
@@ -88,7 +98,7 @@ const userSlice = createSlice({
       state.isLoading = false;
       state.user = data.user;
       addUserToLocalStorage(data.user);
-      toast.success(`Welcome Back, ${data.user?.name}`);
+      toast.success(`Welcome Back, ${data.user?.username}`);
     },
     [loginUser.rejected]: (state, { payload }) => {
       state.isLoading = false;
@@ -103,9 +113,24 @@ const userSlice = createSlice({
       state.isLoading = false;
       state.user = data.user;
       addUserToLocalStorage(data.user);
-      toast.success(`Recipe Added to Favorites, ${data.user.name}!`);
+      toast.success(`Recipe Added to Favorites!`);
     },
     [addUserFavorite.rejected]: (state, { payload }) => {
+      state.isLoading = false;
+      toast.error(payload);
+    },
+    [removeUserFavorite.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [removeUserFavorite.fulfilled]: (state, { payload }) => {
+      const { data } = payload;
+      console.log('data ===', data);
+      state.isLoading = false;
+      state.user = data.user;
+      addUserToLocalStorage(data.user);
+      toast.success(`Recipe Removed From Favorites!`);
+    },
+    [removeUserFavorite.rejected]: (state, { payload }) => {
       state.isLoading = false;
       toast.error(payload);
     },

@@ -4,6 +4,7 @@ import Logo from '../../src/style/assets/meallogo.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { logoutUser } from '../features/userSlice';
+import { CiLogout } from 'react-icons/ci';
 
 function NavBar() {
   const { user } = useSelector((store) => store.user);
@@ -19,10 +20,11 @@ function NavBar() {
 
       {user ? (
         <div className='user'>
-          <h3>{user?.username}</h3>
-
           <Link to='/profile'>
-            <div className='profile'></div>
+            <h3 className='username'>{user?.username}</h3>
+          </Link>
+          <Link to='/profile'>
+            <div className='profile' title='go to profile'></div>
           </Link>
 
           <button
@@ -33,7 +35,7 @@ function NavBar() {
               nav('/auth');
             }}
           >
-            Log Out
+            <CiLogout /> <span> Log Out</span>
           </button>
         </div>
       ) : (

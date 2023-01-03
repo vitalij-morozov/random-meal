@@ -13,15 +13,24 @@ const Wrapper = styled.nav`
   }
   h3 {
     margin: 0;
+    color: var(--primary-600);
+    transition: var(--transition);
+  }
+  h3:hover {
+    color: var(--black);
   }
   .profile {
     background-image: url('https://e7.pngegg.com/pngimages/442/477/png-clipart-computer-icons-user-profile-avatar-profile-heroes-profile-thumbnail.png');
     background-color: white;
     border: 4px solid var(--primary-600);
     border-radius: 50%;
-    padding: 2.5rem;
+    padding: 2.2rem;
     background-position: center center;
     background-size: cover;
+    transition: var(--transition);
+  }
+  .profile:hover {
+    border-color: var(--black);
   }
   .auth-nav {
     background-color: var(--primary-400);
@@ -43,7 +52,35 @@ const Wrapper = styled.nav`
   .user {
     display: flex;
     align-items: center;
-    gap: 1.8rem;
+    gap: 1.4rem;
+  }
+  .btn {
+    color: #222;
+    font-weight: bold;
+    svg {
+      margin-right: 0.2rem;
+      font-size: 1.2rem;
+    }
+  }
+  @media (max-width: 662px) {
+    .user {
+      .username {
+        display: none;
+      }
+    }
+    .profile {
+      padding: 1.7rem;
+    }
+  }
+  @media (max-width: 430px) {
+    .logo {
+      width: 7rem;
+    }
+    .btn {
+      span {
+        display: none;
+      }
+    }
   }
 `;
 export default Wrapper;

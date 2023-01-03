@@ -1,19 +1,27 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import FavoritesCard from './FavoritesCard';
+import Wrapper from '../wrappers/UserProfileWrapper';
+import { Link } from 'react-router-dom';
 
 function UserProfile() {
   const { user } = useSelector((store) => store.user);
 
   return (
-    <div>
+    <Wrapper>
       <div className='favorites'>
-        <h3>Favorites</h3>
+        <div className='favorites-top'>
+          <h3>Favorites</h3>{' '}
+          <Link to='/' className='btn'>
+            GO HOME
+          </Link>
+        </div>
+
         {user?.favorites.map((item, i) => (
           <FavoritesCard key={i} {...item} />
         ))}
       </div>
-    </div>
+    </Wrapper>
   );
 }
 
