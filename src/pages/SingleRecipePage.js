@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { getRecipeById } from '../features/recipeSlice';
 import { FullRecipeCard, FullRecipeIngr } from '../components';
+
 function SingleRecipePage() {
   const { fullRecipe, isLoading } = useSelector((store) => store.recipe);
   const { strMeal, strCategory, strArea, strSource, strYoutube, strInstructions, strMealThumb } = fullRecipe;
@@ -13,7 +14,6 @@ function SingleRecipePage() {
     dispatch(getRecipeById(mealId));
   }, [dispatch, mealId]);
 
-  console.log('fullRecipe ===', fullRecipe);
   if (isLoading) {
     return <h1>Loading...</h1>;
   }

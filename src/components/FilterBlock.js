@@ -1,5 +1,6 @@
 import React from 'react';
 import Wrapper from '../wrappers/FilterBlockWrapper';
+import { GiPerspectiveDiceSixFacesRandom } from 'react-icons/gi';
 
 function FilterBlock({ categories, handleSelection, handleClick }) {
   return (
@@ -16,7 +17,7 @@ function FilterBlock({ categories, handleSelection, handleClick }) {
         </select>
       </div>
       <button type='button' onClick={handleClick} className='btn btn-block'>
-        Get Random Recipe!
+        <span>Get Random Recipe!</span> <GiPerspectiveDiceSixFacesRandom />
       </button>
     </Wrapper>
   );

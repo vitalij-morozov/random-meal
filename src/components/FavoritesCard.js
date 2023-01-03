@@ -5,6 +5,7 @@ import { BsTrash } from 'react-icons/bs';
 import { AiOutlineArrowUp } from 'react-icons/ai';
 import { removeUserFavorite } from '../features/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
+
 function FavoritesCard({ mealId, name, category }) {
   const { user } = useSelector((store) => store.user);
 

@@ -9,6 +9,11 @@ const Wrapper = styled.section`
   margin-top: 1.5%;
   margin-bottom: 1.3rem;
 
+  h3 {
+    text-align: center;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--grey-200);
+  }
   .form-row {
     width: 70%;
   }
@@ -21,6 +26,15 @@ const Wrapper = styled.section`
 
   button {
     width: 70%;
+    svg {
+      font-size: 1.5rem;
+      margin-left: 0.4rem;
+    }
+  }
+
+  @media screen and (max-width: 662px) {
+    width: 100%;
+    margin: 1rem;
   }
 `;
 export default Wrapper;

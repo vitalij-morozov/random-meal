@@ -11,6 +11,7 @@ const Wrapper = styled.footer`
   p {
     margin: 0;
     text-align: center;
+    width: 50%;
   }
   a {
     color: var(--primary-600);

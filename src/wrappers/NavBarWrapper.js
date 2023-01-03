@@ -15,16 +15,17 @@ const Wrapper = styled.nav`
     margin: 0;
     color: var(--primary-600);
     transition: var(--transition);
+    font-size: 1.6rem;
   }
   h3:hover {
     color: var(--black);
   }
   .profile {
-    background-image: url('https://e7.pngegg.com/pngimages/442/477/png-clipart-computer-icons-user-profile-avatar-profile-heroes-profile-thumbnail.png');
+    background-image: url('https://cdn-icons-png.flaticon.com/512/25/25634.png');
     background-color: white;
     border: 4px solid var(--primary-600);
     border-radius: 50%;
-    padding: 2.2rem;
+    padding: 2rem;
     background-position: center center;
     background-size: cover;
     transition: var(--transition);
@@ -81,6 +82,9 @@ const Wrapper = styled.nav`
         display: none;
       }
     }
+  }
+  @media screen and (max-width: 290px) {
+    flex-direction: column;
   }
 `;
 export default Wrapper;

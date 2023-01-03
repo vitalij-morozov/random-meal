@@ -8,6 +8,10 @@ const Wrapper = styled.div`
   border-bottom: 1px solid var(--grey-100);
   h5 {
     margin: 0;
+    width: 50%;
+    span {
+      font-style: italic;
+    }
   }
   .buttons {
     display: flex;

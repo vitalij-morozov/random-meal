@@ -49,6 +49,9 @@ const Wrapper = styled.div`
     border-color: var(--primary-600);
     color: var(--grey-50);
   }
+  @media screen and (max-width: 662px) {
+    margin: 1rem;
+  }
 `;
 
 export default Wrapper;
