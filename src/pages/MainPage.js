@@ -15,7 +15,6 @@ function MainPage() {
     const value = e.target.value;
     dispatch(handleCategorySelect(value));
   };
-  console.log('electedCategory ===', selectedCategory);
   const handleClick = () => {
     dispatch(getRecipesByCategory(selectedCategory));
   };

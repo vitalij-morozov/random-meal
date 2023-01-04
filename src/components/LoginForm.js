@@ -19,17 +19,11 @@ function LoginForm({ toggle }) {
     dispatch(loginUser({ username: usernameRef.current.value, password: passwordRef.current.value }));
   };
 
-  const handleChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    console.log(`${name} ${value}`);
-  };
-
   return (
     <form className='form' onSubmit={handleSubmit}>
       <h2>Login</h2>
-      <FormRow type='text' name='username' inRef={usernameRef} handleChange={handleChange} />
-      <FormRow type='password' name='password' inRef={passwordRef} handleChange={handleChange} />
+      <FormRow type='text' name='username' inRef={usernameRef} />
+      <FormRow type='password' name='password' inRef={passwordRef} />
       <p>
         Do not registered yet?{' '}
         <button className='member-btn' onClick={toggle} type='button'>
@@ -37,8 +31,9 @@ function LoginForm({ toggle }) {
         </button>
       </p>
       <button className='btn btn-block' disabled={isLoading} type='submit'>
-        Login
+        {isLoading ? 'Loading...' : 'Login'}
       </button>
+      <p>Creds for testing: username: user; password: 123456</p>
     </form>
   );
 }

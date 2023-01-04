@@ -10,7 +10,6 @@ function NavBar() {
   const { user } = useSelector((store) => store.user);
   const dispatch = useDispatch();
   const nav = useNavigate();
-  console.log('user ===', user);
 
   return (
     <Wrapper>

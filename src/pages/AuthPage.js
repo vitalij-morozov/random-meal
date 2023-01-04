@@ -20,7 +20,10 @@ function AuthPage() {
 
   return (
     <div className='page container'>
-      {showAuth ? <LoginForm toggle={toggleAuth} /> : <RegisterForm toggle={toggleAuth} />}
+      <button className='btn' type='button' onClick={() => nav('/')}>
+        Go To a Main Page
+      </button>
+      {showAuth ? <RegisterForm toggle={toggleAuth} /> : <LoginForm toggle={toggleAuth} />}
     </div>
   );
 }

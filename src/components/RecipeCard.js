@@ -26,7 +26,6 @@ function RecipeCard() {
     dispatch(
       addUserFavorite({ userId: user.secret, mealId: recipe.idMeal, category: selectedCategory, name: recipe.strMeal })
     );
-    toast.success('Meal added to favorites successfully');
   };
 
   return (

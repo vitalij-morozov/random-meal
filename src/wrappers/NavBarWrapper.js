@@ -21,7 +21,7 @@ const Wrapper = styled.nav`
     color: var(--black);
   }
   .profile {
-    background-image: url('https://cdn-icons-png.flaticon.com/512/25/25634.png');
+    background-image: url('https://winaero.com/blog/wp-content/uploads/2017/12/User-icon-256-blue.png');
     background-color: white;
     border: 4px solid var(--primary-600);
     border-radius: 50%;

@@ -80,6 +80,10 @@ const userSlice = createSlice({
     [registerUser.fulfilled]: (state, { payload }) => {
       const { data } = payload;
       state.isLoading = false;
+      if (payload.error) {
+        toast.error(data[0].message || 'auth error');
+        return;
+      }
       state.user = data.user;
       addUserToLocalStorage(data.user);
       toast.success(`Welcome, ${data.user?.username}`);
@@ -94,6 +98,10 @@ const userSlice = createSlice({
     [loginUser.fulfilled]: (state, { payload }) => {
       const { data } = payload;
       state.isLoading = false;
+      if (payload.error) {
+        toast.error('auth error');
+        return;
+      }
       state.user = data.user;
       addUserToLocalStorage(data.user);
       toast.success(`Welcome Back, ${data.user?.username}`);

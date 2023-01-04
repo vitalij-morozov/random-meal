@@ -9,7 +9,9 @@ function Footer() {
           api - MealDb
         </a>{' '}
         <br />
-        PORTFOLIO
+        <a href='http://www.vmorozov.eu/' target='_blank' rel='noreferrer'>
+          PORTFOLIO
+        </a>
       </p>
     </Wrapper>
   );

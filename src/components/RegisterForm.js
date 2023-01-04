@@ -1,10 +1,12 @@
 import React, { useRef } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from '../features/userSlice';
 import FormRow from './FormRow';
 
 function RegisterForm({ toggle }) {
   const dispatch = useDispatch();
+
+  const { isLoading } = useSelector((store) => store.user);
 
   const usernameRef = useRef();
   const passOneRef = useRef();
@@ -38,8 +40,8 @@ function RegisterForm({ toggle }) {
           Log In
         </button>
       </p>
-      <button className='btn btn-block' disabled='' type='submit'>
-        Register
+      <button className='btn btn-block' disabled={isLoading} type='submit'>
+        {isLoading ? 'Loading...' : 'Register'}
       </button>
     </form>
   );

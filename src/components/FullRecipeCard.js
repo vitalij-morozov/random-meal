@@ -21,7 +21,6 @@ function FullRecipeCard({ id, name, category, area, source, video }) {
       return;
     }
     dispatch(addUserFavorite({ userId: user.secret, mealId: id, category, name }));
-    toast.success('Recipe has been added to favorites');
   };
 
   return (
