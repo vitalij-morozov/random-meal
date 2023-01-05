@@ -1,6 +1,6 @@
 import React from 'react';
 import Wrapper from '../wrappers/NavBarWrapper';
-import Logo from '../../src/style/assets/meallogo.png';
+import Logo from '../style/assets/meallogo.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { logoutUser } from '../features/userSlice';
